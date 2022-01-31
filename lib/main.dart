@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
     Quote(quote: 'Happiness is key to achieving inner peace', author: 'io'),
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +34,14 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.blueGrey,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: quotes.map((e) => QuoteCard(quote: e,)).toList(),
+        children: quotes.map((e) => QuoteCard(
+            quote: e,
+            delete: (){
+              setState(() {
+                quotes.remove(e);
+              });
+            }
+        )).toList(),
       )
     );
   }
